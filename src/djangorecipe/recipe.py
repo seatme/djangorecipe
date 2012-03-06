@@ -98,7 +98,7 @@ class Recipe(object):
                 working_set, self.options['executable'],
                 self.options['bin-directory'],
                 extra_paths=extra_paths,
-                arguments="'%s.%s', %s %s" % (
+                arguments="'%s.%s', %s '%s'" % (
                     self.options['project'],
                     self.options['settings'],
                     ', '.join(["'%s'" % app for app in apps]),
