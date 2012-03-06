@@ -89,6 +89,7 @@ class Recipe(object):
 
     def create_test_runner(self, extra_paths, working_set):
         apps = self.options.get('test', '').split()
+        test_args = self.options.get('test-args', '')
         # Only create the testrunner if the user requests it
         if apps:
             return zc.buildout.easy_install.scripts(
@@ -97,10 +98,11 @@ class Recipe(object):
                 working_set, self.options['executable'],
                 self.options['bin-directory'],
                 extra_paths=extra_paths,
-                arguments="'%s.%s', %s" % (
+                arguments="'%s.%s', %s %s" % (
                     self.options['project'],
                     self.options['settings'],
-                    ', '.join(["'%s'" % app for app in apps])))
+                    ', '.join(["'%s'" % app for app in apps]),
+                    test_args))
         else:
             return []
 
