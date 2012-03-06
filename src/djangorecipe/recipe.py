@@ -102,7 +102,7 @@ class Recipe(object):
                     self.options['project'],
                     self.options['settings'],
                     ', '.join(["'%s'" % app for app in apps]),
-                    ' '.join(test_args)))
+                    ', '.join(test_args)))
         else:
             return []
 
